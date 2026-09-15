@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
 
   englishMessage$!:Observable<string>;
   frenchMessage$!:Observable<string>;
+  meetingTimes$!: Observable<string>;
 
   constructor(private httpClient:HttpClient){}
 
@@ -35,6 +36,8 @@ export class AppComponent implements OnInit{
 
       this.englishMessage$ = this.httpClient.get(this.baseURL + '/welcome?lang=en-US', {responseType: 'text'});
       this.frenchMessage$ = this.httpClient.get(this.baseURL + '/welcome?lang=fr-CA', {responseType: 'text'});
+      this.meetingTimes$ = this.httpClient.get(this.baseURL + '/presentation', {responseType: 'text'} )
+      
 
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
